@@ -3,8 +3,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include <cstdlib>
-#include <ctime>
+#include "operacao.h"
 
 using namespace std;
 
@@ -29,6 +28,7 @@ void segundo_menu(int selecao_tamanho) {
 			system("cls");
 			break;
 		case 1:
+			ordenacao(escolha_menu, selecao_tamanho);
 			break;
 		case 2:
 			break;
