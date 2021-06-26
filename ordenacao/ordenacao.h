@@ -16,7 +16,7 @@ void menu_inicial() {
 
 	//Exibicao do menu inicial
 	do {
-		cout << "Escolha o tamanho do volume de dados desejado." << endl
+		cout << endl << "Escolha o tamanho do volume de dados desejado." << endl
 			<< "1 - Volume pequeno (10 itens)" << endl
 			<< "2 - Volume medio (1.000 itens)" << endl
 			<< "3 - Volume grande (100.000 itens)" << endl
@@ -36,6 +36,8 @@ void menu_inicial() {
 		case 4:
 			break;
 		default:
+
+			system("cls");
 			cout << endl << "Opcao invalida!" << endl;
 			break;
 		}

@@ -142,7 +142,7 @@
     <ClCompile Include="ordenacao.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="volumes.h" />
+    <ClInclude Include="ordenacao.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

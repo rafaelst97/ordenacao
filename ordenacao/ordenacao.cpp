@@ -4,14 +4,14 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include "volumes.h"
+#include "ordenacao.h"
 
 using namespace std;
 
 int main()
 {
 
-    tamanho_volume();
+    menu_inicial();
     
 }
 
