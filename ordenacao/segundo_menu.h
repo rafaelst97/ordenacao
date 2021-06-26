@@ -17,8 +17,10 @@ void segundo_menu(int selecao_tamanho) {
 		system("cls");
 		cout << endl << "Escolha o metodo de ordenacao" << endl
 			<< "1 - Bubble sort" << endl
-			<< "2 - Segundo metodo" << endl
-			<< "3 - Terceiro metodo" << endl
+			<< "2 - Selection Sort" << endl
+			<< "3 - Insertion Sort" << endl
+			<< "4 - Quick Sort" << endl
+			<< "5 - Merge Sort" << endl
 			<< "0 - Para voltar" << endl
 			<< "Sua opcao: ";
 		cin >> escolha_menu;
@@ -33,6 +35,10 @@ void segundo_menu(int selecao_tamanho) {
 		case 2:
 			break;
 		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
 			break;
 		default:
 			system("cls");
