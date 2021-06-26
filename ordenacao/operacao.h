@@ -44,7 +44,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			auto end = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double, std::milli> float_ms = end - start;
 			system("cls");
-			std::cout << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
 			cout << "Numero de Operaçoes realizadas: " << contador_de_operacoes << endl;
 			system("pause");
 		}
