@@ -19,6 +19,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 		int vetor[MAX];
 		int maior = MAX;
 		int menor = 1;
+
 		srand((unsigned)time(0)); //para gerar numeros aleatorios reais
 
 		//Preenchimento do vetor
@@ -29,6 +30,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 		//Bubble Sort
 		if (metodo_de_ordenacao == 1) {
 
+			auto start = std::chrono::high_resolution_clock::now();
 			for (int i = 0; i < MAX; i++) {
 				for (int j = 0; j < MAX-1; j++) {
 					if (vetor[j] > vetor[j + 1]) {
@@ -39,10 +41,12 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 					}
 				}
 			}
+			auto end = std::chrono::high_resolution_clock::now();
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operaçoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
 		}
 	}
-
-	system("cls");
-	cout << endl << "Numero de Operaçoes realizadas: " << contador_de_operacoes << endl;
-	system("pause");
 }
