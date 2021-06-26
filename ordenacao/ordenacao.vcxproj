@@ -142,7 +142,8 @@
     <ClCompile Include="ordenacao.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ordenacao.h" />
+    <ClInclude Include="menu_inicial.h" />
+    <ClInclude Include="segundo_menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

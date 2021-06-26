@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include "ordenacao.h"
+#include "menu_inicial.h"
 
 using namespace std;
 
