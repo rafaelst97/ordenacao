@@ -152,7 +152,7 @@ void merge_sort(int vetor[], int inicio, int fim, int vetor_aux[], int &contador
 void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 	int contador_de_operacoes = 0;
-	//Volume de Dados pequeno
+	//Volume de dados pequeno -----------------------------------------------------------------------------------------
 	if (selecao_tamanho == 1) {
 
 		const int MAX = 10;
@@ -169,11 +169,11 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 		for (int i = 0; i < MAX; i++) {
 			vetor[i] = rand() % (maior - menor + 1) + menor;
-			cout << endl << "Posicao: " << i << " | Valor: " << vetor[i];
+			//cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
 		}
 
-		cout << endl;
-		system("pause");
+		//cout << endl;
+		//system("pause");
 
 		//Bubble Sort -------------------------------------------------------------------------------------------------
 		if (metodo_de_ordenacao == 1) {
@@ -184,12 +184,12 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
 
-			system("cls");
-			for (int i = 0; i < MAX; i++) {
-				cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
-			}
-			cout << endl;
-			system("pause");
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
 
 			std::chrono::duration<double, std::milli> float_ms = end - start;
 			system("cls");
@@ -207,12 +207,12 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
 
-			system("cls");
-			for (int i = 0; i < MAX; i++) {
-				cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
-			}
-			cout << endl;
-			system("pause");
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
 
 			std::chrono::duration<double, std::milli> float_ms = end - start;
 			system("cls");
@@ -229,12 +229,12 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
 
-			system("cls");
-			for (int i = 0; i < MAX; i++) {
-				cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
-			}
-			cout << endl;
-			system("pause");
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
 
 			std::chrono::duration<double, std::milli> float_ms = end - start;
 			system("cls");
@@ -253,14 +253,14 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
 
-			system("cls");
-			for (int i = 0; i < MAX; i++) {
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
 
-				cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
 
-			}
-			cout << endl;
-			system("pause");
+			//}
+			//cout << endl;
+			//system("pause");
 
 			std::chrono::duration<double, std::milli> float_ms = end - start;
 			system("cls");
@@ -280,14 +280,14 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
 
-			system("cls");
-			for (int i = 0; i < MAX; i++) {
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
 
-				cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
 
-			}
-			cout << endl;
-			system("pause");
+			//}
+			//cout << endl;
+			//system("pause");
 
 			std::chrono::duration<double, std::milli> float_ms = end - start;
 			system("cls");
@@ -297,5 +297,5 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 		}
 
-	}
+	} // VOLUME PEQUENO DE DADOS -------------------------------------------------------------------------------------- // Volume pequeno de dados ------------------------------------------------------
 }
