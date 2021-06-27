@@ -115,8 +115,9 @@ int quick_sort(int vetor[], int inicio, int fim) {
 }
 
 //Funcao de Merge Sort ------------------------------------------------------------------------------------------------
-int merge_sort(int vetor[], const int MAX) {
-
+int merge_sort(int vetor[], const int MAX) { //Entrada do Merge Sort
+	int vetorAux[MAX];
+	MergeSort(vetor, 0, MAX, vetorAux);
 }
 
 //Operacao responsavel pela criacao do vetor e ordenacao
@@ -245,7 +246,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Quick Sort
-			contador_de_operacoes = quick_sort(vetor, 0, MAX);
+			contador_de_operacoes = merge_sort(vetor, MAX);
 
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
