@@ -117,7 +117,7 @@ int quick_sort(int vetor[], int inicio, int fim) {
 //Funcao de Merge Sort ------------------------------------------------------------------------------------------------
 
 //Juncao da funcao de Merge Sort
-void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[], int &contador_de_operacoes) {
+void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[], unsigned long long int &contador_de_operacoes) {
 	int esquerda = inicio;
 	int direita = meio;
 	for (int i = inicio; i < fim; ++i) {
@@ -137,7 +137,7 @@ void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[], int &co
 }
 
 //Entrada da funcao de Merge Sort
-void merge_sort(int vetor[], int inicio, int fim, int vetor_aux[], int &contador_de_operacoes) {
+void merge_sort(int vetor[], int inicio, int fim, int vetor_aux[], unsigned long long int &contador_de_operacoes) {
 	if ((fim - inicio) < 2) return;
 
 	int meio = ((inicio + fim) / 2);
@@ -151,14 +151,14 @@ void merge_sort(int vetor[], int inicio, int fim, int vetor_aux[], int &contador
 //Operacao responsavel pela criacao do vetor e ordenacao
 void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
-	int contador_de_operacoes = 0;
+	unsigned long long int contador_de_operacoes = 0;
 	//Volume de dados pequeno -----------------------------------------------------------------------------------------
 	if (selecao_tamanho == 1) {
 
 		const int MAX = 10;
 		int vetor[MAX];
 		int vetor_aux[MAX];
-		int maior = MAX;
+		int maior = 100;
 		int menor = 1;
 
 		srand((unsigned)time(0)); //para gerar numeros aleatorios reais
@@ -245,7 +245,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 		//Quick Sort --------------------------------------------------------------------------------------------------
 		else if (metodo_de_ordenacao == 4) {
-			
+
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Quick Sort
 			contador_de_operacoes = quick_sort(vetor, 0, MAX);
@@ -298,4 +298,445 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 		}
 
 	} // VOLUME PEQUENO DE DADOS -------------------------------------------------------------------------------------- // Volume pequeno de dados ------------------------------------------------------
+	//Volume de dados medio -------------------------------------------------------------------------------------------
+	else if (selecao_tamanho == 2) {
+
+		const int MAX = 1000;
+		int vetor[MAX];
+		int vetor_aux[MAX];
+		int maior = 100;
+		int menor = 1;
+
+		srand((unsigned)time(0)); //para gerar numeros aleatorios reais
+
+		//Preenchimento do vetor
+
+		system("cls");
+
+		for (int i = 0; i < MAX; i++) {
+			vetor[i] = rand() % (maior - menor + 1) + menor;
+			//cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+		}
+
+		//cout << endl;
+		//system("pause");
+
+		//Bubble Sort -------------------------------------------------------------------------------------------------
+		if (metodo_de_ordenacao == 1) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Bubble Sort
+			contador_de_operacoes = bubble_sort(vetor, MAX);
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Selection Sort ----------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 2) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Selection Sort
+			contador_de_operacoes = selection_sort(vetor, MAX);
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Insertion Sort ----------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 3) {
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Insertion Sort
+			contador_de_operacoes = insertion_sort(vetor, MAX);
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Quick Sort --------------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 4) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Quick Sort
+			contador_de_operacoes = quick_sort(vetor, 0, MAX);
+
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+
+		}
+
+		//Merge Sort --------------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 5) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Merge Sort
+			merge_sort(vetor, 0, MAX, vetor_aux, contador_de_operacoes);
+
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+
+		}
+
+	}
+	//Volume de dados grande -------------------------------------------------------------------------------------------
+	else if (selecao_tamanho == 3) {
+
+		const int MAX = 100000;
+		int vetor[MAX];
+		int vetor_aux[MAX];
+		int maior = 100;
+		int menor = 1;
+
+		srand((unsigned)time(0)); //para gerar numeros aleatorios reais
+
+		//Preenchimento do vetor
+
+		system("cls");
+
+		for (int i = 0; i < MAX; i++) {
+			vetor[i] = rand() % (maior - menor + 1) + menor;
+			//cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+		}
+
+		//cout << endl;
+		//system("pause");
+
+		//Bubble Sort -------------------------------------------------------------------------------------------------
+		if (metodo_de_ordenacao == 1) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Bubble Sort
+			contador_de_operacoes = bubble_sort(vetor, MAX);
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Selection Sort ----------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 2) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Selection Sort
+			contador_de_operacoes = selection_sort(vetor, MAX);
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Insertion Sort ----------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 3) {
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Insertion Sort
+			contador_de_operacoes = insertion_sort(vetor, MAX);
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Quick Sort --------------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 4) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Quick Sort
+			contador_de_operacoes = quick_sort(vetor, 0, MAX);
+
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+
+		}
+
+		//Merge Sort --------------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 5) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Merge Sort
+			merge_sort(vetor, 0, MAX, vetor_aux, contador_de_operacoes);
+
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+
+		}
+
+	}
+	//Volume de dados massivo -------------------------------------------------------------------------------------------
+	else if (selecao_tamanho == 4) {
+
+		const int MAX = 10000000;
+		int* vetor = new int[MAX];
+		int* vetor_aux = new int[MAX];
+		int maior = MAX;
+		int menor = 1;
+
+		srand((unsigned)time(0)); //para gerar numeros aleatorios reais
+
+		//Preenchimento do vetor
+
+		system("cls");
+
+		for (int i = 0; i < MAX; i++) {
+			vetor[i] = rand() % (maior - menor + 1) + menor;
+			//cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+		}
+
+		//cout << endl;
+		//system("pause");
+
+		//Bubble Sort -------------------------------------------------------------------------------------------------
+		if (metodo_de_ordenacao == 1) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Bubble Sort
+			contador_de_operacoes = bubble_sort(vetor, MAX);
+			delete vetor;
+			delete vetor_aux;
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Selection Sort ----------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 2) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Selection Sort
+			contador_de_operacoes = selection_sort(vetor, MAX);
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Insertion Sort ----------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 3) {
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Insertion Sort
+			contador_de_operacoes = insertion_sort(vetor, MAX);
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Quick Sort --------------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 4) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Quick Sort
+			contador_de_operacoes = quick_sort(vetor, 0, MAX);
+
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+
+		}
+
+		//Merge Sort --------------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 5) {
+
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Merge Sort
+			merge_sort(vetor, 0, MAX, vetor_aux, contador_de_operacoes);
+
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			//system("cls");
+			//for (int i = 0; i < MAX; i++) {
+
+			//	cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+
+			//}
+			//cout << endl;
+			//system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+
+		}
+
+	}
+
 }
