@@ -116,7 +116,7 @@ int quick_sort(int vetor[], int inicio, int fim) {
 
 //Funcao de Merge Sort ------------------------------------------------------------------------------------------------
 
-void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[]) {
+void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[], int &contador_de_operacoes) {
 	int esquerda = inicio;
 	int direita = meio;
 	for (int i = inicio; i < fim; ++i) {
@@ -135,13 +135,15 @@ void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[]) {
 	}
 }
 
-void merge_sort(int vetor[], int inicio, int fim, int vetor_aux[]) {
+void merge_sort(int vetor[], int inicio, int fim, int vetor_aux[], int &contador_de_operacoes) {
 	if ((fim - inicio) < 2) return;
 
 	int meio = ((inicio + fim) / 2);
-	merge_sort(vetor, inicio, meio, vetor_aux);
-	merge_sort(vetor, meio, fim, vetor_aux);
-	juntar(vetor, inicio, meio, fim, vetor_aux);
+	merge_sort(vetor, inicio, meio, vetor_aux, contador_de_operacoes);
+	merge_sort(vetor, meio, fim, vetor_aux, contador_de_operacoes);
+	juntar(vetor, inicio, meio, fim, vetor_aux, contador_de_operacoes);
+
+	contador_de_operacoes++;
 }
 
 //Operacao responsavel pela criacao do vetor e ordenacao
@@ -271,7 +273,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Merge Sort
-			merge_sort(vetor, 0, MAX, vetor_aux);
+			merge_sort(vetor, 0, MAX, vetor_aux, contador_de_operacoes);
 
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
