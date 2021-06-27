@@ -115,9 +115,33 @@ int quick_sort(int vetor[], int inicio, int fim) {
 }
 
 //Funcao de Merge Sort ------------------------------------------------------------------------------------------------
-int merge_sort(int vetor[], const int MAX) { //Entrada do Merge Sort
-	int vetorAux[MAX];
-	MergeSort(vetor, 0, MAX, vetorAux);
+
+void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[]) {
+	int esquerda = inicio;
+	int direita = meio;
+	for (int i = inicio; i < fim; ++i) {
+		if ((esquerda < meio) and ((direita >= fim) or (vetor[esquerda] < vetor[direita]))) {
+			vetor_aux[i] = vetor[esquerda];
+			++esquerda;
+		}
+		else {
+			vetor_aux[i] = vetor[direita];
+			++direita;
+		}
+	}
+	//copiando o vetor de volta
+	for (int i = inicio; i < fim; ++i) {
+		vetor[i] = vetor_aux[i];
+	}
+}
+
+void merge_sort(int vetor[], int inicio, int fim, int vetor_aux[]) {
+	if ((fim - inicio) < 2) return;
+
+	int meio = ((inicio + fim) / 2);
+	merge_sort(vetor, inicio, meio, vetor_aux);
+	merge_sort(vetor, meio, fim, vetor_aux);
+	juntar(vetor, inicio, meio, fim, vetor_aux);
 }
 
 //Operacao responsavel pela criacao do vetor e ordenacao
@@ -129,6 +153,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 		const int MAX = 10;
 		int vetor[MAX];
+		int vetor_aux[MAX];
 		int maior = MAX;
 		int menor = 1;
 
@@ -245,8 +270,8 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 		else if (metodo_de_ordenacao == 5) {
 
 			auto start = std::chrono::high_resolution_clock::now();
-			//Mecanismo do Quick Sort
-			contador_de_operacoes = merge_sort(vetor, MAX);
+			//Mecanismo do Merge Sort
+			merge_sort(vetor, 0, MAX, vetor_aux);
 
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
