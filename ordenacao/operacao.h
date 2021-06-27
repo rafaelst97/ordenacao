@@ -70,7 +70,7 @@ int insertion_sort(int vetor[], const int MAX) {
 	return contador_de_operacoes;
 }
 
-//Funcao de Quicksort -------------------------------------------------------------------------------------------------
+//Funcao de Quick Sort -------------------------------------------------------------------------------------------------
 int quick_sort(int vetor[], int inicio, int fim) {
 
 	int contador_de_operacoes = 0;
@@ -112,6 +112,11 @@ int quick_sort(int vetor[], int inicio, int fim) {
 	contador_de_operacoes++;
 
 	return contador_de_operacoes;
+}
+
+//Funcao de Merge Sort ------------------------------------------------------------------------------------------------
+int merge_sort(int vetor[], const int MAX) {
+
 }
 
 //Operacao responsavel pela criacao do vetor e ordenacao
@@ -211,6 +216,33 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 		//Quick Sort --------------------------------------------------------------------------------------------------
 		else if (metodo_de_ordenacao == 4) {
 			
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Quick Sort
+			contador_de_operacoes = quick_sort(vetor, 0, MAX);
+
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			system("cls");
+			for (int i = 0; i < MAX; i++) {
+
+				cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+
+			}
+			cout << endl;
+			system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+
+		}
+
+		//Merge Sort --------------------------------------------------------------------------------------------------
+		else if (metodo_de_ordenacao == 5) {
+
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Quick Sort
 			contador_de_operacoes = quick_sort(vetor, 0, MAX);
