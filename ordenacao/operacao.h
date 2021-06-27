@@ -70,7 +70,7 @@ int insertion_sort(int vetor[], const int MAX) {
 	return contador_de_operacoes;
 }
 
-//Funcao de Quicksort
+//Funcao de Quicksort -------------------------------------------------------------------------------------------------
 int quick_sort(int vetor[], int inicio, int fim) {
 
 	int contador_de_operacoes = 0;
@@ -140,7 +140,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 		cout << endl;
 		system("pause");
 
-		//Bubble Sort
+		//Bubble Sort -------------------------------------------------------------------------------------------------
 		if (metodo_de_ordenacao == 1) {
 
 			auto start = std::chrono::high_resolution_clock::now();
@@ -163,7 +163,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			system("pause");
 		}
 
-		//Selection Sort
+		//Selection Sort ----------------------------------------------------------------------------------------------
 		else if (metodo_de_ordenacao == 2) {
 
 			auto start = std::chrono::high_resolution_clock::now();
@@ -186,7 +186,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			system("pause");
 		}
 
-		//Insertion Sort
+		//Insertion Sort ----------------------------------------------------------------------------------------------
 		else if (metodo_de_ordenacao == 3) {
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Insertion Sort
@@ -208,7 +208,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			system("pause");
 		}
 
-		//Quick Sort
+		//Quick Sort --------------------------------------------------------------------------------------------------
 		else if (metodo_de_ordenacao == 4) {
 			
 			auto start = std::chrono::high_resolution_clock::now();
