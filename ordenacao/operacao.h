@@ -116,6 +116,7 @@ int quick_sort(int vetor[], int inicio, int fim) {
 
 //Funcao de Merge Sort ------------------------------------------------------------------------------------------------
 
+//Juncao da funcao de Merge Sort
 void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[], int &contador_de_operacoes) {
 	int esquerda = inicio;
 	int direita = meio;
@@ -135,6 +136,7 @@ void juntar(int vetor[], int inicio, int meio, int fim, int vetor_aux[], int &co
 	}
 }
 
+//Entrada da funcao de Merge Sort
 void merge_sort(int vetor[], int inicio, int fim, int vetor_aux[], int &contador_de_operacoes) {
 	if ((fim - inicio) < 2) return;
 
