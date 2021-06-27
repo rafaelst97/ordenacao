@@ -47,7 +47,9 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 						vetor[j] = aux;
 						++contador_de_operacoes;
 					}
+					++contador_de_operacoes;
 				}
+				++contador_de_operacoes;
 			}
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
@@ -77,7 +79,9 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 				for (int j = i; j < MAX; j++) {
 					if (vetor[j] < vetor[memoria]) {
 						memoria = j;
+						++contador_de_operacoes;
 					}
+					++contador_de_operacoes;
 				}
 				aux = vetor[i];
 				vetor[i] = vetor[memoria];
@@ -90,6 +94,41 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			system("cls");
 			for (int i = 0; i < MAX; i++) {
 				cout << endl << "Posicao: " << i+1 << " | Valor: " << vetor[i];
+			}
+			cout << endl;
+			system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+		}
+
+		//Insertion Sort
+		else if (metodo_de_ordenacao == 3) {
+			int temp = 0;
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Insertion Sort
+			for (int i = 1; i < MAX; i++) {
+				int temp = vetor[i];
+				int j = i - 1;
+
+				while ((j >= 0) && (vetor[j] > temp)) {
+					vetor[j + 1] = vetor[j];
+					j--;
+					++contador_de_operacoes;
+				}
+
+				vetor[j + 1] = temp;
+				++contador_de_operacoes;
+			}
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			system("cls");
+			for (int i = 0; i < MAX; i++) {
+				cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
 			}
 			cout << endl;
 			system("pause");

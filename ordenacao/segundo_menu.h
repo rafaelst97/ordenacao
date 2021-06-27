@@ -38,6 +38,8 @@ void segundo_menu(int selecao_tamanho) {
 			escolha_menu = 0;
 			break;
 		case 3:
+			ordenacao(escolha_menu, selecao_tamanho);
+			escolha_menu = 0;
 			break;
 		case 4:
 			break;
