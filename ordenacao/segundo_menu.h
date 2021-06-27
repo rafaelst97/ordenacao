@@ -14,6 +14,7 @@ void segundo_menu(int selecao_tamanho) {
 
 	//Exibicao do menu de selecao do metodo de ordenacao
 	do {
+
 		system("cls");
 		cout << endl << "Escolha o metodo de ordenacao" << endl
 			<< "1 - Bubble sort" << endl
@@ -27,30 +28,47 @@ void segundo_menu(int selecao_tamanho) {
 
 		switch (escolha_menu) {
 		case 0:
+
 			system("cls");
 			break;
+
 		case 1:
+
 			ordenacao(escolha_menu, selecao_tamanho);
 			escolha_menu = 0;
 			break;
+
 		case 2:
+
 			ordenacao(escolha_menu, selecao_tamanho);
 			escolha_menu = 0;
 			break;
+
 		case 3:
+
 			ordenacao(escolha_menu, selecao_tamanho);
 			escolha_menu = 0;
 			break;
+
 		case 4:
+
+			ordenacao(escolha_menu, selecao_tamanho);
+			escolha_menu = 0;
 			break;
+
 		case 5:
+
 			break;
+
 		default:
+
 			system("cls");
 			cout << endl << "Opcao invalida!" << endl;
 			system("pause");
 			break;
+
 		}
+
 	} while (escolha_menu != 0);
 
 }

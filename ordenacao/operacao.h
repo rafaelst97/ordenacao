@@ -8,6 +8,50 @@
 
 using namespace std;
 
+//Funcao de Quicksort
+int quicksort(int vetor[], int inicio, int fim) {
+
+	int contador_de_operacoes = 0;
+	int i, j, pivo, aux;
+	i = inicio;
+	j = fim - 1;
+	pivo = vetor[(inicio + fim) / 2];
+	while (i <= j)
+	{
+		while (vetor[i] < pivo && i < fim)
+		{
+			i++;
+			contador_de_operacoes++;
+		}
+		while (vetor[j] > pivo && j > inicio)
+		{
+			j--;
+			contador_de_operacoes++;
+		}
+		if (i <= j)
+		{
+			aux = vetor[i];
+			vetor[i] = vetor[j];
+			vetor[j] = aux;
+			i++;
+			j--;
+			contador_de_operacoes++;
+		}
+	}
+	if (j > inicio) {
+		quicksort(vetor, inicio, j + 1);
+		contador_de_operacoes++;
+	}
+	if (i < fim) {
+		quicksort(vetor, i, fim);
+		contador_de_operacoes++;
+	}
+
+	contador_de_operacoes++;
+
+	return contador_de_operacoes;
+}
+
 //Operacao responsavel pela criacao do vetor e ordenacao
 void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
@@ -138,6 +182,33 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
 			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
 			system("pause");
+		}
+
+		//Quick Sort
+		else if (metodo_de_ordenacao == 4) {
+			
+			auto start = std::chrono::high_resolution_clock::now();
+			//Mecanismo do Quick Sort
+			contador_de_operacoes = quicksort(vetor, 0, MAX);
+
+			//Contagem do tempo e do numero de operacoes
+			auto end = std::chrono::high_resolution_clock::now();
+
+			system("cls");
+			for (int i = 0; i < MAX; i++) {
+
+				cout << endl << "Posicao: " << i + 1 << " | Valor: " << vetor[i];
+
+			}
+			cout << endl;
+			system("pause");
+
+			std::chrono::duration<double, std::milli> float_ms = end - start;
+			system("cls");
+			std::cout << endl << "A ordenacao foi executada em: " << float_ms.count() << " milissegundos" << std::endl;
+			cout << "Numero de Operacoes realizadas: " << contador_de_operacoes << endl;
+			system("pause");
+
 		}
 
 	}
