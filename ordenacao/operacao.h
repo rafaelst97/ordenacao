@@ -8,8 +8,70 @@
 
 using namespace std;
 
+//Funcao do Bublesort --------------------------------------------------------------------------------------------------
+int bubble_sort(int vetor[], const int MAX ) {
+
+	int contador_de_operacoes = 0;
+
+	for (int i = 0; i < MAX; i++) {
+		for (int j = 0; j < MAX - 1; j++) {
+			if (vetor[j] > vetor[j + 1]) {
+				int aux = vetor[j + 1];
+				vetor[j + 1] = vetor[j];
+				vetor[j] = aux;
+				++contador_de_operacoes;
+			}
+			++contador_de_operacoes;
+		}
+		++contador_de_operacoes;
+	}
+	return contador_de_operacoes;
+}
+
+//Funcao de Selection Sort ---------------------------------------------------------------------------------------------
+int selection_sort(int vetor[], const int MAX) {
+	int contador_de_operacoes = 0;
+	for (int i = 0; i < MAX; i++) {
+		int memoria = i;
+		int aux = 0;
+		for (int j = i; j < MAX; j++) {
+			if (vetor[j] < vetor[memoria]) {
+				memoria = j;
+				++contador_de_operacoes;
+			}
+			++contador_de_operacoes;
+		}
+		aux = vetor[i];
+		vetor[i] = vetor[memoria];
+		vetor[memoria] = aux;
+		++contador_de_operacoes;
+	}
+	return contador_de_operacoes;
+}
+
+//Funcao de Insertion Sort ---------------------------------------------------------------------------------------------
+int insertion_sort(int vetor[], const int MAX) {
+	int contador_de_operacoes = 0;
+	int temp = 0;
+	for (int i = 1; i < MAX; i++) {
+		int temp = vetor[i];
+		int j = i - 1;
+
+		while ((j >= 0) && (vetor[j] > temp)) {
+			vetor[j + 1] = vetor[j];
+			j--;
+			++contador_de_operacoes;
+		}
+
+		vetor[j + 1] = temp;
+		++contador_de_operacoes;
+	}
+
+	return contador_de_operacoes;
+}
+
 //Funcao de Quicksort
-int quicksort(int vetor[], int inicio, int fim) {
+int quick_sort(int vetor[], int inicio, int fim) {
 
 	int contador_de_operacoes = 0;
 	int i, j, pivo, aux;
@@ -39,11 +101,11 @@ int quicksort(int vetor[], int inicio, int fim) {
 		}
 	}
 	if (j > inicio) {
-		quicksort(vetor, inicio, j + 1);
+		quick_sort(vetor, inicio, j + 1);
 		contador_de_operacoes++;
 	}
 	if (i < fim) {
-		quicksort(vetor, i, fim);
+		quick_sort(vetor, i, fim);
 		contador_de_operacoes++;
 	}
 
@@ -83,18 +145,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Bubble Sort
-			for (int i = 0; i < MAX; i++) {
-				for (int j = 0; j < MAX-1; j++) {
-					if (vetor[j] > vetor[j + 1]) {
-						int aux = vetor[j + 1];
-						vetor[j + 1] = vetor[j];
-						vetor[j] = aux;
-						++contador_de_operacoes;
-					}
-					++contador_de_operacoes;
-				}
-				++contador_de_operacoes;
-			}
+			contador_de_operacoes = bubble_sort(vetor, MAX);
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
 
@@ -117,21 +168,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Selection Sort
-			for (int i = 0; i < MAX; i++) {
-				int memoria = i;
-				int aux = 0;
-				for (int j = i; j < MAX; j++) {
-					if (vetor[j] < vetor[memoria]) {
-						memoria = j;
-						++contador_de_operacoes;
-					}
-					++contador_de_operacoes;
-				}
-				aux = vetor[i];
-				vetor[i] = vetor[memoria];
-				vetor[memoria] = aux;
-				++contador_de_operacoes;
-			}
+			contador_de_operacoes = selection_sort(vetor, MAX);
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
 
@@ -151,22 +188,9 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 
 		//Insertion Sort
 		else if (metodo_de_ordenacao == 3) {
-			int temp = 0;
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Insertion Sort
-			for (int i = 1; i < MAX; i++) {
-				int temp = vetor[i];
-				int j = i - 1;
-
-				while ((j >= 0) && (vetor[j] > temp)) {
-					vetor[j + 1] = vetor[j];
-					j--;
-					++contador_de_operacoes;
-				}
-
-				vetor[j + 1] = temp;
-				++contador_de_operacoes;
-			}
+			contador_de_operacoes = insertion_sort(vetor, MAX);
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
 
@@ -189,7 +213,7 @@ void ordenacao(int metodo_de_ordenacao, int selecao_tamanho) {
 			
 			auto start = std::chrono::high_resolution_clock::now();
 			//Mecanismo do Quick Sort
-			contador_de_operacoes = quicksort(vetor, 0, MAX);
+			contador_de_operacoes = quick_sort(vetor, 0, MAX);
 
 			//Contagem do tempo e do numero de operacoes
 			auto end = std::chrono::high_resolution_clock::now();
