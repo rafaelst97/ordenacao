@@ -7,8 +7,11 @@ O cliente solicitou uma análise bem elaborada sobre as comparações e avaliaç
 sob diferentes cenários, tais como:
 
 • Ordenar pequenos volumes de dados: 10 a 100 informações;
+
 • Ordenar médios volumes de dados: 1.000 a 50.000 informações;
+
 • Ordenar grandes volumes de dados: 100.000 a 500.000 informações; e
+
 • Ordenar volumes massivos de dados: 10.000.000 a 50.000.000 informações.
 
 O cliente quer que você apresente:
@@ -47,7 +50,11 @@ até 5 pontos retroativos a outras avaliações da disciplina.
 No mínimo, os seguintes algoritmos de ordenação devem ser analisados:
 
 • Bubble Sort;
+
 • Selection Sort;
+
 • Insertion Sort;
+
 • Quick Sort; e
+
 • Merge Sort.
